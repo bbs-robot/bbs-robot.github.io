@@ -286,9 +286,10 @@
         <div class="content has-text-justified">
           <p>
             Consider the action \( a_t \) taken by an agent at time \( t \). If the action is in a chunk generated at time \( t - h \) and the agent has context length \( c \), then we denote the action distribution as \( \pi_{(c, h)}^t \). Similarly, 
-            if the action is in a chunk generated at time \( t - h - d \), then we denote the action distribution as \( \pi_{(c, h+d)}^t \). Note that in \( \pi_{(c, h+d)}^t \), the chunk is larger at time \( t \) by \( d \) steps. Assume that the expert policy is \( \pi_E^t \) and the environment has noise level \( \delta \). We want to analyze the expected loss of the two agents \( \pi_{(c, h)}^t \) and \( \pi_{(c, h+d)}^t \) with respect to the expert policy.
-            Suppose the divergence between \( \pi_{(c, h+d)} \) and the expert caused by guessing \( s_{t-h-d+1:t-h} \) wrong is at most \( \epsilon := \epsilon_{t-h-d+1:t-h} \geq 0 \). On the other hand, suppose that knowing the states \( s_{t-h-d-c:t-h-c-1} \) allows \( \pi_{(c, h+d)}^t \) to minimize the divergence by \( \alpha := \alpha_{t-h-d-c:t-h-c-1} \geq 0 \). Then, the expected loss of the two learners are related by the following inequality:
+            if the action is in a chunk generated at time \( t - h - d \), then we denote the action distribution as \( \pi_{(c, h+d)}^t \). Note that in \( \pi_{(c, h+d)}^t \), the chunk is larger at time \( t \) by \( d \) steps. Assume that the expert policy is \( \pi_E^t \) and the environment has noise level \( \delta \). 
+            Then, the expected loss of the two agents with respect to the expert policy are related by the following inequality:
             $$ \min_{\pi_{(c, h+d)}^t} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) | C \right] \leq \min_{\pi_{(c, h)}^t} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) | C \right] - \alpha + \epsilon(1 - ( 1 - \delta)^{2d}). $$ 
+            Here, \( \alpha \) captures the temporal dependencies in demos while \( \epsilon( 1 - (1 - \delta)^{2d} ) \) represents the loss due to dynamics uncertainty in the environment. Please refer to the paper for a more formal definition of the terms involved in the equation.
           </p>
         </div>
       </div>
