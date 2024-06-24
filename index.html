@@ -292,9 +292,10 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Analysis</h2>
-        <div class="content has-text-justified">
+        <!-- <div class="content has-text-justified"> -->
+        <div class="content">
           <p>
-            Prior works have not formally understood the effect of action chunking. Here, we aim to understand if it can improve performance by reducing the divergence with the expert in certain circumstances. Suppose at time $t$, a learner with context length $c$ is taking an action in an action chunk generated at time $t-h$. Now consider a different policy with context length $c$ whose action at time $t$ is in an action chunk generated at $t-h-d$. Assume an environment with noise level $\delta$. Suppose the divergence between $\pi_{(c, h+d)}$ and the expert caused by guessing $s_{t-h-d+1:t-h}$ wrong is at most $\epsilon \coloneqq \epsilon_{t-h-d+1:t-h} \geq 0$. On the other hand, suppose that knowing the states $s_{t-h-d-c:t-h-c-1}$ allows $\pi_{(c, h+d)}^t$ to minimize the divergence by $\alpha \coloneqq \alpha_{t-h-d-c:t-h-c-1} \geq 0$. Then, we have the following inequality:
+            Prior works have not formally understood the effect of action chunking. Here, we aim to understand if it can improve performance by reducing the divergence with the expert in certain circumstances. Suppose at time $t$, a learner with context length $c$ is taking an action in an action chunk generated at time $t-h$. Now consider a different policy with context length $c$ whose action at time $t$ is in an action chunk generated at $t-h-d$. Assume an environment with noise level $\delta$. Suppose the divergence between $\pi_{(c, h+d)}$ and the expert caused by guessing $s_{t-h-d+1:t-h}$ wrong is at most $\epsilon \coloneqq \epsilon_{t-h-d+1:t-h} \geq 0$. On the other hand, suppose that knowing the states $s_{t-h-d-c:t-h-c-1}$ allows $\pi_{(c, h+d)}^t$ to minimize the divergence by $\alpha \coloneqq \alpha_{t-h-d-c:t-h-c-1} \geq 0$. Then, the expected loss of the two learners are related by the following inequality:
           </p>
         </div>
       </div>
@@ -309,9 +310,7 @@
       <div class="column is-four-fifths">
         <div class="content">
           <p>
-            $$ \min \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) \right] - \min \mathbb{E}_{G} \left[
-            \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) \right] 
-            \geq  \alpha - \epsilon(1 - ( 1 - \delta)^{2d}) $$
+            $$ \min_{\pi_{(c, h+d)}^t} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) | C \right] \leq \min_{\pi_{(c, h)}^t} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) | C \right] - \alpha + \epsilon(1 - ( 1 - \delta)^{2d}). $$ 
           </p>
         </div>
       </div>
