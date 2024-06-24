@@ -153,15 +153,6 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
 
           </div>
@@ -294,7 +285,10 @@
         <h2 class="title is-3">Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            Prior works have not formally understood the effect of action chunking. Here, we aim to understand if it can improve performance by reducing the divergence with the expert in certain circumstances. Suppose at time \( t \), a learner with context length \( c \) is taking an action in an action chunk generated at time \( t-h \). Now consider a different policy with context length \( c \) whose action at time \( t \) is in an action chunk generated at \( t-h-d \). Assume an environment with noise level \( \delta \). Suppose the divergence between \( \pi_{(c, h+d)} \) and the expert caused by guessing \( s_{t-h-d+1:t-h} \) wrong is at most \( \epsilon := \epsilon_{t-h-d+1:t-h} \geq 0 \). On the other hand, suppose that knowing the states \( s_{t-h-d-c:t-h-c-1} \) allows \( \pi_{(c, h+d)}^t \) to minimize the divergence by \( \alpha := \alpha_{t-h-d-c:t-h-c-1} \geq 0 \). Then, the expected loss of the two learners are related by the following inequality:
+            Consider the action \( a_t \) taken by an agent at time \( t \). If the action is in a chunk generated at time \( t - h \) and the agent has context length \( c \), then we denote the action distribution as \( \pi_{(c, h)}^t \). Similarly, 
+            if the action is in a chunk generated at time \( t - h - d \), then we denote the action distribution as \( \pi_{(c, h+d)}^t \). Note that in \( \pi_{(c, h+d)}^t \), the chunk is larger at time \( t \) by \( d \) steps. Assume that the expert policy is \( \pi_E^t \) and the environment has noise level \( \delta \). We want to analyze the expected loss of the two agents \( \pi_{(c, h)}^t \) and \( \pi_{(c, h+d)}^t \) with respect to the expert policy.
+            Suppose the divergence between \( \pi_{(c, h+d)} \) and the expert caused by guessing \( s_{t-h-d+1:t-h} \) wrong is at most \( \epsilon := \epsilon_{t-h-d+1:t-h} \geq 0 \). On the other hand, suppose that knowing the states \( s_{t-h-d-c:t-h-c-1} \) allows \( \pi_{(c, h+d)}^t \) to minimize the divergence by \( \alpha := \alpha_{t-h-d-c:t-h-c-1} \geq 0 \). Then, the expected loss of the two learners are related by the following inequality:
+            $$ \min_{\pi_{(c, h+d)}^t} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) | C \right] \leq \min_{\pi_{(c, h)}^t} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) | C \right] - \alpha + \epsilon(1 - ( 1 - \delta)^{2d}). $$ 
           </p>
         </div>
       </div>
@@ -302,7 +296,7 @@
   </div>
 </section>
 
-<!-- Centered Equation Section -->
+<!-- Centered Equation Section
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -315,7 +309,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <!-- Method section -->
