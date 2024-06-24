@@ -275,12 +275,13 @@
   </div>
 </section>
 
+<!-- Analysis section -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <figure class="image is-centered">
-          <img src="./static/images/interpolate_start.jpg" alt="Analysis image">
+          <img src="./static/images/PRILearners.jpg" alt="Analysis image">
         </figure>
       </div>
     </div>
@@ -317,6 +318,48 @@
     </div>
   </div>
 </section>
+
+
+<!-- Method section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <figure class="image is-centered">
+          <img src="./static/images/PRILearners.jpg" alt="Analysis image">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our main hypothesis is that while the probability of any pair of samples sharing the same latent strategy is low, the likelihood of finding a consistent pair from a large number of samples is significantly higher. This intuition motivates us to cast the problem of closed-loop action chunking as searching for the optimal action among a batch of plans sampled at each time step, \( a^* = \argmin_{a \in \mathcal{A}} \mathcal{L}_{B}(a) + \mathcal{L}_F(a) \), where $\mathcal{L}_B$ and $\mathcal{L}_F$ are two criteria measuring the temporal dependency with respect to the backward decision and forward plan. To preserve sufficient temporal dependency in closed-loop operations, a sequence of actions should (i) commit to one action chunk in the absence of unexpected changes and (ii) react smoothly to environmental changes. 
+            We use the action chunk selected at the previous time step as a reference for enforcing coherence across time. Given the previous action chunk $\hat{a}_{t-1}, \cdots, \hat{a}_{t+h-1}$, we select action chunks that minimize the weighted sum of Euclidean distances across the $h-1$ overlapping steps: $$ \mathcal{L}_B = \sum_{\tau=0}^{h-1} \rho^\tau \left\| a_{t+\tau} - {\hat a}_{t+\tau} \right\|_2. $$ This backward loss encourages similar latent strategies between neighboring steps, while allowing for gradual adaptation to unforeseen environment dynamics.
+            Ideally, a policy should predict for sufficiently long to capture the full range of temporal dependencies in the demonstrations.
+            However, building such a policy can be difficult in practice due to modeling constraints and dataset limitations.   
+            Often, even the best policy at hand may still produce a significant number of suboptimal plans. To mitigate this, we compare each candidate plan with two sets of reference samples: one set from a long-horizon policy and the other from a short-horizon one. On average, the former set is expected to plan more effectively than the latter. This disparity allows us to frame the forward objective as minimizing the average distance between a candidate sample and a set of positive samples while maximizing its average distance from the negative ones,
+            $$ \mathcal{L}_F = \sum_{a^{+} \in \mathcal{A}^{+}} \sum_{\tau=0}^{h'} \left\| a_{t+\tau} - a^{+}_{t+\tau} \right\|_2 - \sum_{a^{-} \in \mathcal{A}^{-}} \sum_{\tau=0}^{h'} \left\| a_{t+\tau} - a^{-}_{t+\tau} \right\|_2, $$ where $\mathcal{A}^{+} = \mathcal{A} \setminus \{a\}$ is the positive set predicted by the long-horizon policy $\pi$, $\mathcal{A}^{-}$ is the negative set predicted by the short-horizon one $\pi'$, and $h'$ is the short prediction horizon. We set $h' = h / 4$ to ensure a substantial horizon difference between the two policies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
 
 
