@@ -276,6 +276,18 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <figure class="image is-centered">
+          <img src="./static/images/interpolate_start.jpg" alt="Analysis image">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -290,18 +302,6 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <figure class="image is-centered">
-          <img src="./static/images/interpolate_start.jpg" alt="Analysis image">
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Centered Equation Section -->
 <section class="section">
   <div class="container is-max-desktop">
@@ -309,7 +309,9 @@
       <div class="column is-four-fifths">
         <div class="content">
           <p>
-            $$ E = mc^2 $$
+            $$ \min \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) \right] - \min \mathbb{E}_{G} \left[
+            \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) \right] 
+            \geq  \alpha - \epsilon(1 - ( 1 - \delta)^{2d}) $$
           </p>
         </div>
       </div>
