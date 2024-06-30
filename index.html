@@ -288,12 +288,29 @@
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            In action chunking, the agent predicts the joint distribution of a sequence of actions conditioned on the context and then executes all or part of the sequence without replanning. In our analysis, we investigate the benefits and drawbacks of using a longer action chunk. Consider a shorter action chunk of length \( h \) and a longer one of length \( h + d \). The longer action chunk benefits from remembering more past states and suffers from having not observed 
+            the more recent states, as is illustrated below:
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <figure class="image is-centered">
-          <img src="./static/images/Action Chunking.gif" alt="Analysis gif" style="width: 90%; height: auto; display: block; margin: 0 auto;">
+          <img src="./static/images/Action Chunking.png" alt="Analysis gif" style="width: 90%; height: auto; display: block; margin: 0 auto;">
         </figure>
       </div>
     </div>
@@ -301,24 +318,22 @@
 </section>
 
 
-<!-- <section class="section">
+<section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            Consider the action \( a_t \) taken by an agent at time \( t \). If the action is in a chunk generated at time \( t - h \) and the agent has context length \( c \), then we denote the action distribution as \( \pi_{(c, h)}^t \). Similarly, 
-            if the action is in a chunk generated at time \( t - h - d \), then we denote the action distribution as \( \pi_{(c, h+d)}^t \). Note that in \( \pi_{(c, h+d)}^t \), the chunk is larger at time \( t \) by \( d \) steps. Assume that the expert policy is \( \pi_E^t \) and the environment has noise level \( \delta \). 
-            Then, the expected loss of the two agents with respect to the expert policy are related by the following inequality:
+            Let the longer action chunk's distribution of \( a_t \) be \( \pi_{(c, h+d)}^t \) and that of the shorter action chunk be \( \pi_{(c, h)}^t \). Let the expert's distribution be \(\pi_{E}^t \).  
+            The expected loss of the two agents with respect to the expert are related by the following inequality. 
             $$ \min_{\pi_{(c, h+d)}^t} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) | C \right] \leq \min_{\pi_{(c, h)}^t} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) | C \right] - \alpha + \epsilon(1 - ( 1 - \delta)^{2d}). $$ 
-            Here, \( \alpha \) captures the temporal dependencies in demos while \( \epsilon( 1 - (1 - \delta)^{2d} ) \) represents the loss due to dynamics uncertainty in the environment. Please refer to the paper for a more formal definition of the terms involved in the equation.
+            Here, \( \alpha \) represents the advantage from capturing more temporal dependencies in demos, showing a longer action chunk benefits from longer temporal coherence whilst suffering from \( \epsilon( 1 - (1 - \delta)^{2d} ) \) representing the loss due to dynamics uncertainty in the environment. 
           </p>
         </div>
       </div>
     </div>
   </div>
-</section> -->
+</section>
 
 
 <!-- <section class="section">
