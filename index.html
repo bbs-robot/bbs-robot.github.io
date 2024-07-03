@@ -6,7 +6,7 @@
         content="Bidirectional Behavioral Sampling.">
   <meta name="keywords" content="BBS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bidirectional Behavioral Sampling: Understanding and Improving Action Chunking for Generative Behavioral Cloning.</title>
+  <title>Bidirectional Behavioral Sampling: Understanding and Improving Action Chunking for Generative Behavioral Cloning</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/bbsicon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -42,6 +42,7 @@
   <script src="./static/js/index.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 <body>
 
@@ -91,7 +92,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Bidirectional Behavioral Sampling: Understanding and Improving Action Chunking for Generative Behavioral Cloning.</h1>
+          <h1 class="title is-1 publication-title">Bidirectional Behavioral Sampling: Understanding and Improving Action Chunking for Generative Behavioral Cloning</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://sites.google.com/view/yuejiangliu/home">Yuejiang Liu</a><sup>*</sup>,</span>
@@ -234,7 +235,6 @@
   </div>
 </section> -->
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -269,7 +269,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <figure class="image is-centered">
+        <figure class="image is-centered" style="margin-bottom: 0;">
           <img src="./static/images/teaser.png" alt="Analysis image">
         </figure>
       </div>
@@ -277,7 +277,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top: 1rem;">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -288,6 +288,89 @@
   </div>
 </section>
 
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Predicting and executing a sequence of actions without intermediate replanning, known as action chunking, is increasingly used in robot learning from human demonstrations. However, its reported effects on the learned policy are inconsistent; some studies find it crucial for achieving strong results, while others observe decreased performance. In this paper, we first dissect how action chunking impacts the divergence between the learner and the demonstrator. We find that action chunking allows the model to capture the temporal dependencies in demonstrations (e.g., from high-level strategies and styles), but at the potential cost of accumulating uncertainty in dynamic environments (e.g., stochastic noise and unexpected changes), leading to compounding errors. To address this, we propose bidirectional behavioral sampling (BBS), a test-time inference algorithm that integrates action chunking with closed-loop operations. BBS samples a batch of multiple action chunks at each time step and explicitly searches for the optimal action based on two criteria: (i) backward decision coherence, which favors samples aligned with previous decisions, (ii) forward horizon contrast, which favors samples close to long-horizon plans and far from short-horizon ones. By coupling decisions within and across action chunks, BBS promotes strong temporal dependencies over multiple steps while maintaining high reactivity to unexpected state observations. Our experiment results show that BBS consistently outperforms conventional closed-loop operations, achieving an average of 26% relative improvements across seven manipulation tasks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <figure class="image is-centered">
+          <img src="./static/images/teaser.png" alt="Analysis image">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Analysis</h2>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            In action chunking, the agent predicts the joint distribution of a sequence of actions conditioned on the context and then executes all or part of the sequence without replanning. In our analysis, we investigate the benefits and drawbacks of using a longer action chunk. Consider a shorter action chunk of length \( h \) and a longer one of length \( h + d \). The longer action chunk benefits from remembering more past states and suffers from having not observed the more recent states, as is illustrated below:
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <figure class="image is-centered" style="margin-top: 0; margin-bottom: 0;">
+          <img src="./static/images/Action Chunking.png" alt="Analysis gif" style="width: 90%; height: auto; display: block; margin: 0 auto;">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 1rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Let the longer action chunk's distribution of \( a_t \) be \( \pi_{(c, h+d)}^t \) and that of the shorter action chunk be \( \pi_{(c, h)}^t \). Let the expert's distribution be \(\pi_{E}^t \).  
+            The expected loss of the two agents with respect to the expert are related by the following inequality. 
+            $$ \min_{\pi_{(c, h+d)}^t} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) | C \right] \leq \min_{\pi_{(c, h)}^t} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) | C \right] - \alpha + \epsilon(1 - ( 1 - \delta)^{2d}). $$ 
+            Here, \( \alpha \) represents the advantage from capturing more temporal dependencies in demos, showing a longer action chunk benefits from longer temporal coherence whilst suffering from \( \epsilon( 1 - (1 - \delta)^{2d} ) \) representing the loss due to dynamics uncertainty in the environment. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -334,7 +417,7 @@
     </div>
   </div>
 </section>
-
+ -->
 
 <!-- <section class="section">
   <div class="container is-max-desktop">
@@ -352,10 +435,39 @@
 </section> -->
 
 
-<!-- Method section -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our hypothesis suggests that while the probability of any pair of samples sharing the same latent strategy is low, the likelihood of finding a consistent pair from a large number of samples is significantly higher. This motivates us to solve the closed-loop action chunking problem by identifying the optimal action within a batch of plans at each time step, \( a^* = \arg \min_{a \in \mathcal{A}} \mathcal{L}_B(a) + \mathcal{L}_F(a) \) where  \( \mathcal{L}_B \) and \( \mathcal{L}_F \) are two criteria measuring the temporal dependency with respect to the backward decision and forward plan.
+            To ensure temporal coherence, we  reference the action chunk from the previous time step, \( \{ \hat{a}_{t-1}, \cdots, \hat{a}_{t+h-1} \} \) and minimize the weighted sum of Euclidean distance across \( h - 1 \) overlapping steps: 
+            $$ \mathcal{L}_B = \sum_{\tau=0}^{h-1} \rho^\tau \left\| a_{t+\tau} - {\hat a}_{t+\tau} \right\|_2. $$
+            This encourages consistent latent strategies across time steps, while allowing for gradual adaptation to unforeseen environment dynamics. A robust policy should predict far enough to capture temporal dependencies in demonstrations. To ensure this, we compare each candidate plan with two reference sets: one from a long-horizon policy and the other from a short-horizon one. The forward objective minimizes the average distance to positive samples from long horizon policy, \( \mathcal{A}^+ \), and maximizes the average distance to negative samples from short horizon policy, \( \mathcal{A}^- \):
+            $$ \mathcal{L}_F = \sum_{a^{+} \in \mathcal{A}^{+}} \sum_{\tau=0}^{h'} \left\| a_{t+\tau} - a^{+}_{t+\tau} \right\|_2 - \sum_{a^{-} \in \mathcal{A}^{-}} \sum_{\tau=0}^{h'} \left\| a_{t+\tau} - a^{-}_{t+\tau} \right\|_2, $$ where \( \mathcal{A}^{+} = \mathcal{A} \setminus \{a\} \) is the positive set predicted by the long-horizon policy \( \pi \), \( \mathcal{A}^{-} \) is the negative set predicted by the short-horizon one \( \pi' \), and \( h' \) is the short prediction horizon. We set \( h' = h / 4 \) to ensure a substantial horizon difference between the two policies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <figure class="image is-centered" style="margin-top: 0; margin-bottom: 0;">
+          <img src="./static/images/search.png" alt="Analysis image" style="width: 40%; height: auto; display: block; margin: 0 auto;">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Method</h2>
@@ -383,15 +495,12 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
       <div class="column">
         <div class="content">
           <h2 class="title is-3">Simulations 1</h2>
