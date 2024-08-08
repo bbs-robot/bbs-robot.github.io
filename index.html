@@ -500,83 +500,120 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column">
+    <div class="content has-text-centered">
+      <h1 class="title is-2">Real World Experiments</h1>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        Our real world experiments investigate the performance of various action decoding methods in both static and stochastic environments. We use a pretrained diffusion policy and compare the performance of Bidirectional Action Decoding (BID) with random sampling in open loop, random sampling in closed loop, and Exponential Moving Average (EMA) sampling.
+        The first task is to pick up a cup from a fixed initial position and place it on a saucer that is placed next to it. In the stochastic setting, the cup is pulled with a string as the robot carries out the task.
+      </p>
+    </div>
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-quarter">
         <div class="content">
-          <h2 class="title is-3">Simulations 1</h2>
-          <p>
-            <i>BBS</i> simulations.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
+          <h3 class="title is-5">BID</h3>
+          <video id="video1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/BID_cup_stochastic.mov" type="video/mp4">
           </video>
+          <p>
+            Adapts to the stochasticity and carries out a consistent long-term plan.
+          </p>
         </div>
       </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Simulation 2</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              <i>BBS</i> simulations.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">Random (open loop)</h3>
+          <video id="video2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Random_open_cup_stochastic.mov" type="video/mp4">
+          </video>
+          <p>
+            Fails to adapt to the stochasticity - gripper closes before reaching the cup.
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">Random (closed loop)</h3>
+          <video id="video3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Random_closed_cup_stochastic.mov" type="video/mp4">
+          </video>
+          <p>
+            Fails to carry out a consistent long-term plan resulting in jittery behavior.
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">EMA (closed loop)</h3>
+          <video id="video4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/EMA_cup_stochastic.mov" type="video/mp4">
+          </video>
+          <p>
+            Fails to react to the stochasticity quickly enough and fails to pick up the cup.
+          </p>
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
+    <div class="content has-text-justified">
+      <!-- <h1 class="title is-2">Real World Experiments in Stochastic Environment</h1> -->
+      <p>
+        In particular, we observe that open loop action decoding often struggles with precision even in the static setting. Our next task for the robot is 
+        to drop a toy into a plastic cup. In the dynamic setting, this cup is moved by hand as the robot carries out the task. In both static and dynamic settings, 
+        BID achieves over 2x improvement in success rate compared to random sampling in open loop.
+      </p>
+    </div>
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3" style="text-align: center;">Real World Experiments</h2>
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4" style="text-align: center;">Navigation + Manipulation</h3>
-        <div class="content has-text-justified" style="text-align: center;">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">BID (static)</h3>
+          <video id="video1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/BID_droptoy_static.MP4" type="video/mp4">
+          </video>
         </div>
-        <div class="content has-text-centered" style="text-align: center;">
-          <video id="replay-video"
-                controls
-                muted
-                preload
-                playsinline
-                width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">Random (static)</h3>
+          <video id="video3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/vanilla_droptoy_statifc.MP4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">BID (dynamic)</h3>
+          <video id="video2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/BID_droptoy_stochastic.MP4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">Random (dynamic)</h3>
+          <video id="video4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/vanilla_droptoy_stochastic.MP4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
-    <!--/ Animation. -->
 
   </div>
 </section>
 
 
-<section class="section" id="BibTeX">
+<!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{liu2024bidirectional,
-  author    = {Liu, Yuejiang and Hamid, Jubayer I. and Xie, Annie and Lee, Yoonho and Du, Max and Finn, Chelsea},
+  author    = {Liu, Yuejiang and Hamid, Jubayer Ibn and Xie, Annie and Lee, Yoonho and Du, Max and Finn, Chelsea},
   title     = {Bidirectional Behavioral Sampling: Understanding and Improving Action Chunking for Generative Behavioral Cloning},
   journal   = {arXiv},
   year      = {2024},
 }</code></pre>
   </div>
-</section>
+</section> -->
 
 
 <footer class="footer">
