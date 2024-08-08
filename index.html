@@ -501,18 +501,83 @@
 <section class="section">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
+      <h1 class="title is-2">Simulation Benchmarks</h1>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        We evaluate BBS on the Push-T, RoboMimic, and 4-Object Franka Kitchen tasks. While existing inference methods offer some benefits for closed-loop operations, they lack robustness. 
+        BBS consistently achieves substantial gains across all tasks, surpassing the vanilla baseline by over 26% in relative improvements. We provide demonstrations of four of the methods on 
+        the PushT task in a stochastic environment. 
+      </p>
+    </div>
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">BBS</h3>
+          <video id="video1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/pusht_noisy_bbs.mov" type="video/mp4">
+          </video>
+          <p>
+            Adapts to the stochasticity and carries out a consistent long-term plan.
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">Random (open loop)</h3>
+          <video id="video2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/pusht_noisy_random_open.mov" type="video/mp4">
+          </video>
+          <p>
+            Fails to adapt to the stochasticity in the environment. 
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">Random (closed loop)</h3>
+          <video id="video3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/pusht_noisy_random_close.mp4" type="video/mp4">
+          </video>
+          <p>
+            Adapts to stochasticity but lacks a long-term plan. 
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="content">
+          <h3 class="title is-5">EMA (closed loop)</h3>
+          <video id="video4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/pusht_noisy_ema.mov" type="video/mp4">
+          </video>
+          <p>
+            Fails to balance adaptability and long-term planning. Highly sensitive to decay rate. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
       <h1 class="title is-2">Real World Experiments</h1>
     </div>
     <div class="content has-text-justified">
       <p>
-        Our real world experiments investigate the performance of various action decoding methods in both static and stochastic environments. We use a pretrained diffusion policy and compare the performance of Bidirectional Action Decoding (BID) with random sampling in open loop, random sampling in closed loop, and Exponential Moving Average (EMA) sampling.
+        Our real world experiments investigate the performance of various action decoding methods in both static and stochastic environments. We use a pretrained diffusion policy and compare the performance of BBS with random sampling in open loop, random sampling in closed loop, and Exponential Moving Average (EMA) sampling.
         The first task is to pick up a cup from a fixed initial position and place it on a saucer that is placed next to it. In the stochastic setting, the cup is pulled with a string as the robot carries out the task.
       </p>
     </div>
     <div class="columns is-centered is-multiline">
       <div class="column is-one-quarter">
         <div class="content">
-          <h3 class="title is-5">BID</h3>
+          <h3 class="title is-5">BBS</h3>
           <video id="video1" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/BID_cup_stochastic.mov" type="video/mp4">
           </video>
@@ -560,16 +625,16 @@
       <p>
         In particular, we observe that open loop action decoding often struggles with precision even in the static setting. Our next task for the robot is 
         to drop a toy into a plastic cup. In the dynamic setting, this cup is moved by hand as the robot carries out the task. In both static and dynamic settings, 
-        BID achieves over 2x improvement in success rate compared to random sampling in open loop.
+        BBS achieves over 2x improvement in success rate compared to random sampling in open loop.
       </p>
     </div>
 
     <div class="columns is-centered is-multiline">
       <div class="column is-one-quarter">
         <div class="content">
-          <h3 class="title is-5">BID (static)</h3>
+          <h3 class="title is-5">BBS (static)</h3>
           <video id="video1" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/BID_droptoy_static.MP4" type="video/mp4">
+            <source src="./static/videos/BID_droptoy_static.mov" type="video/mp4">
           </video>
         </div>
       </div>
@@ -577,15 +642,15 @@
         <div class="content">
           <h3 class="title is-5">Random (static)</h3>
           <video id="video3" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/vanilla_droptoy_statifc.MP4" type="video/mp4">
+            <source src="./static/videos/vanilla_droptoy_statifc.mov" type="video/mp4">
           </video>
         </div>
       </div>
       <div class="column is-one-quarter">
         <div class="content">
-          <h3 class="title is-5">BID (dynamic)</h3>
+          <h3 class="title is-5">BBS (dynamic)</h3>
           <video id="video2" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/BID_droptoy_stochastic.MP4" type="video/mp4">
+            <source src="./static/videos/BID_droptoy_stochastic.mov" type="video/mp4">
           </video>
         </div>
       </div>
@@ -593,7 +658,7 @@
         <div class="content">
           <h3 class="title is-5">Random (dynamic)</h3>
           <video id="video4" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/vanilla_droptoy_stochastic.MP4" type="video/mp4">
+            <source src="./static/videos/vanilla_droptoy_stochastic.mov" type="video/mp4">
           </video>
         </div>
       </div>
