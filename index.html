@@ -456,16 +456,38 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            Let the longer action chunk's distribution of \( a_t \) be \( \pi_{(c, h+d)}^t \) and that of the shorter action chunk be \( \pi_{(c, h)}^t \). Let the expert's distribution be \(\pi_{E}^t \).  
+            We consider two models with equal context length \( c \). Let the longer action chunk's distribution of \( a_t \) be \( \pi_{h+d} \) and that of the shorter action chunk be \( \pi_{h}^t \). Let the expert's distribution be \(\pi^* \).  
+            <!-- Note that the larger action chunk model has to simulate the states \(s_{t-h-d+1:t-h}\), which the smaller action chunk model directly observes. 
+            Let the maximum error from simulating these unobserved states wrong be \(\epsilon_f\) and let the temporal dependency of \(a_t\) on these states be \(\alpha_f\). In contrast, the smaller action chunk model has to simulate the states \(s_{t-h-d-c:t-h-c-1}\). Let the maximum error from simulating these unobserved states wrong be \(\epsilon_b\) and let the temporal dependency of \(a_t\) on these states be \(\alpha_b\). 
             The expected loss of the two agents with respect to the expert are related by the following inequality. 
-            $$ \min_{\pi_{(c, h+d)}^t} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{(c, h+d)}^t - \pi_E^t) | C \right] \leq \min_{\pi_{(c, h)}^t} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{(c, h)}^t - \pi_E^t) | C \right] - \alpha + \epsilon(1 - ( 1 - \delta)^{2d}). $$ 
-            Here, \( \alpha \) represents the advantage from capturing more temporal dependencies in demos, showing a longer action chunk benefits from longer temporal coherence whilst suffering from \( \epsilon( 1 - (1 - \delta)^{2d} ) \) representing the loss due to dynamics uncertainty in the environment. 
+            $$ \alpha_f - \epsilon_b(1 - P_b^{2d}) \leq \min_{\pi_{h+d}} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{h+d}, \pi^*) | C \right] - \min_{\pi_{h}} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{h}, \pi^*) | C \right] \leq - \alpha_b + \epsilon_f(1 - P_f^{2d}). $$  -->
+            Our theoretical analysis provides us two important takeaways :
           </p>
+          
+          <!-- First takeaway box -->
+          <div style="background-color: #f5f5f5; padding: 1rem; margin-top: 1rem; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+            <p>
+              <!-- First takeaway content -->
+              <strong>Takeaway 1:</strong> In a near-deterministic environment, the optimal longer action horizon policy outperforms the optimal shorter action horizon policy. More formally, if \(a_t\) is temporally dependent on at least one state in \(\{s_{t-h-c-d:t-h-c-1} \}\) and \(\epsilon_{f}\) is finite, 
+              $$ \min_{\pi_{h+d}} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{h+d}, \pi^*)| C \right] < \min_{\pi_{h}} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{h}, \pi^*)| C \right]$$
+            </p>
+          </div>
+          
+          <!-- Second takeaway box -->
+          <div style="background-color: #f5f5f5; padding: 1rem; margin-top: 1rem; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+            <p>
+              <!-- Second takeaway content -->
+              <strong>Takeaway 2:</strong>  In a highly stochastic environment, the optimal shorter action horizon policy outperforms the optimal longer action horizon policy. More formally, if temporal dependency decreases over the number of time steps, then 
+              $$ \min_{\pi_{h}} \mathbb{E}_{G} \left[\mathcal{L}(\pi_{h}, \pi^*)| C \right] <  \min_{\pi_{h+d}} \mathbb{E}_{G} \left[ \mathcal{L}(\pi_{h+d}, \pi^*)| C \right] $$
+            </p>
+          </div>
+          
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="section">
   <div class="container is-max-desktop">
