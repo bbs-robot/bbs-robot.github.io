@@ -431,7 +431,7 @@
         <h3 class="subtitle is-4">Why action chunking does not work in noisy/dynamic settings</h3>
         <div class="content has-text-justified">
           <p>
-            In action chunking, the agent predicts the joint distribution of a sequence of actions conditioned on the context and then executes all or part of the sequence without replanning. In our analysis, we investigate the benefits and drawbacks of using a longer action chunk. Consider a shorter action chunk of length \( h \) and a longer one of length \( h + d \). The longer action chunk benefits from remembering more past states and suffers from having not observed the more recent states, as is illustrated below:
+            In action chunking, the agent predicts the joint distribution of a sequence of actions conditioned on the context and then executes all or part of the sequence without replanning. In our analysis, we consider two models with equal context length \( c \) and investigate the effect of using a longer action horizon. Consider a shorter action chunk of length \( h \) and a longer one of length \( h + d \). The longer action chunk benefits from remembering more past states and suffers from having not observed the more recent states, as is illustrated below:
           </p>
       </div>
     </div>
@@ -456,7 +456,7 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            We consider two models with equal context length \( c \). Let the longer action chunk's distribution of \( a_t \) be \( \pi_{h+d} \) and that of the shorter action chunk be \( \pi_{h}^t \). Let the expert's distribution be \(\pi^* \).  
+            Let the longer action chunk's distribution of \( a_t \) be \( \pi_{h+d} \) and that of the shorter action chunk be \( \pi_{h} \). Let the expert's distribution be \(\pi^* \).  
             <!-- Note that the larger action chunk model has to simulate the states \(s_{t-h-d+1:t-h}\), which the smaller action chunk model directly observes. 
             Let the maximum error from simulating these unobserved states wrong be \(\epsilon_f\) and let the temporal dependency of \(a_t\) on these states be \(\alpha_f\). In contrast, the smaller action chunk model has to simulate the states \(s_{t-h-d-c:t-h-c-1}\). Let the maximum error from simulating these unobserved states wrong be \(\epsilon_b\) and let the temporal dependency of \(a_t\) on these states be \(\alpha_b\). 
             The expected loss of the two agents with respect to the expert are related by the following inequality. 
